@@ -7,50 +7,59 @@
   .login-form {
     display: block;
   }
-  .login-form-div{
+
+  .login-form-div {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .login-input-div{
+
+  .login-input-div {
     height: 80px
   }
-  .login-input-text{
+
+  .login-input-text {
     height: 35px;
     width: 200px;
     border: 2px solid lightgrey;
     border-radius: 5px;
   }
-  .login-button-div{
+
+  .login-button-div {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .login-submit-button{
-    background-color: #3B82F6 ;
+
+  .login-submit-button {
+    background-color: #3B82F6;
     height: 50px;
     width: 150px;
     border-radius: 5px;
     color: white;
-    border:none;
+    border: none;
+    cursor: pointer;
   }
 </style>
 <div class="login-form-div">
-  <form class="login-form">
+  <form class="login-form" [formGroup]="loginForm" (ngSubmit) = "onSubmit()">
     <div class="login-input-div">
       <span class="login-label"><label>
           Username:
         </label></span>
-      <input type="text" class="login-input-text"/>
+      <input type="text" formControlName="username" class="login-input-text" />
     </div>
     <div class="login-input-div">
       <span class="login-label"> <label class="login-label">
           Password:
         </label></span>
-      <input type="text" class="login-input-text"/>
+      <input type="text" formControlName="password" class="login-input-text" />
     </div>
+    <!-- <div>ERROR MESSAGE</div> -->
     <div class="login-button-div">
-      <button class="login-submit-button">LOGIN</button>
+      <button 
+        class="login-submit-button" 
+      >LOGIN</button>
     </div>
   </form>
 </div>
