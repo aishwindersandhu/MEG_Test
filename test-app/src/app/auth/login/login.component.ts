@@ -25,7 +25,7 @@ export class LoginComponent {
   ) {
     //initialising formgroup as an instance of FormBuilder 
     this.loginForm = this.fb.group({
-      username: ['', Validators.required],    //creating validation boundary for login
+      username: ['', Validators.required],//creating validation boundary for login
       password: ['', Validators.required]
     });
   }
@@ -39,6 +39,7 @@ export class LoginComponent {
           //Redirect here
         },
         error: (err) => {
+          this.errorMessage = "Invalid Credentials"
           console.log(err, "Error from API");
         }
       });
