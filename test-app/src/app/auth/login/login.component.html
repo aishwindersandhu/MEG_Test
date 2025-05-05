@@ -1,0 +1,40 @@
+<style>
+  .login-label {
+    width: 100px;
+    display: inline-block;
+  }
+
+  .login-form {
+    display: block;
+  }
+  .login-form-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .login-input-div{
+    height: 80px
+  }
+  .login-input-text{
+    height: 35px;
+    width: 200px;
+    border: 2px solid lightgrey;
+    border-radius: 5px;
+  }
+</style>
+<div class="login-form-div">
+  <form class="login-form">
+    <div class="login-input-div">
+      <span class="login-label"><label>
+          Username:
+        </label></span>
+      <input type="text" class="login-input-text"/>
+    </div>
+    <div class="login-input-div">
+      <span class="login-label"> <label class="login-label">
+          Password:
+        </label></span>
+      <input type="text" class="login-input-text"/>
+    </div>
+  </form>
+</div>
