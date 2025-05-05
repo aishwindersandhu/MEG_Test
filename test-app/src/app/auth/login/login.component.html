@@ -40,6 +40,11 @@
     border: none;
     cursor: pointer;
   }
+  .login-error-message{
+    color: red;
+    height: 50px;
+    text-align: center;
+  }
 </style>
 <div class="login-form-div">
   <form class="login-form" [formGroup]="loginForm" (ngSubmit) = "onSubmit()">
@@ -55,10 +60,12 @@
         </label></span>
       <input type="text" formControlName="password" class="login-input-text" />
     </div>
-    <!-- <div>ERROR MESSAGE</div> -->
+    <div class="login-error-message">{{errorMessage}}</div>
+     <!-- //[disabled] = "isDisabled" -->
     <div class="login-button-div">
       <button 
         class="login-submit-button" 
+
       >LOGIN</button>
     </div>
   </form>
