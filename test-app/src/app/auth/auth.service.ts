@@ -20,10 +20,7 @@ export class AuthService {
       , credentials).pipe((
         tap((res) => {
           console.log(res, "response from login");
-          //this.errorMessage = '';
-          //checking if the user is authenticated, since it's responding with a token.
           if (res.token) {
-            //redirect to submitting data
             //setting the token in local storage for any further api calls
             //This can also be done using session storage if that's required
             localStorage.setItem('token', res.token);

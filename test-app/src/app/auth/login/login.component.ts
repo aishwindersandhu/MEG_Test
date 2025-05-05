@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 //to make HTTP api calls 
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'login',
@@ -21,7 +22,8 @@ export class LoginComponent {
   loginForm: FormGroup;
   constructor(private fb: FormBuilder,
     private http: HttpClient,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
     //initialising formgroup as an instance of FormBuilder 
     this.loginForm = this.fb.group({
@@ -36,7 +38,10 @@ export class LoginComponent {
       .subscribe({
         next: (res) => {
           console.log(res, "response from login");
-          //Redirect here
+          //Redirect to dashboard only if valid token
+          if (res.token) {
+            this.router.navigate(['/dashboard']);
+          }
         },
         error: (err) => {
           this.errorMessage = "Invalid Credentials"
