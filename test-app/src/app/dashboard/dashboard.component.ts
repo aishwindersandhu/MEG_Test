@@ -20,6 +20,15 @@ export class DashboardComponent {
         error: (err) => {
           console.log(err, "err in getForms");
         }
+      });
+      this.formService.submitFormData()
+      .subscribe({
+        next:(data)=>{
+          console.log("submitted successfully", data);
+        },
+        error:(err)=>{
+          console.log(err,"error in submission");
+        }
       })
   }
 
