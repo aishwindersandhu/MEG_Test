@@ -37,7 +37,6 @@ export class LoginComponent {
     this.authService.login(this.loginForm.value)
       .subscribe({
         next: (res) => {
-          console.log(res, "response from login");
           //Redirect to dashboard only if valid token
           if (res.token) {
             this.router.navigate(['/dashboard']);
