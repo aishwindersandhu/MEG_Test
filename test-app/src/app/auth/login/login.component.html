@@ -40,14 +40,32 @@
     border: none;
     cursor: pointer;
   }
-  .login-error-message{
-    color: red;
+  .login-submit-button-disabled{
+    background-color: #3B82F6;
+    opacity: 60%;
+    height: 50px;
+    width: 150px;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    cursor: not-allowed;
+  }
+
+  .login-error-message {
+    color: #b00020;
+    background-color: #fdecea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
     height: 50px;
     text-align: center;
+    margin:10px;
   }
 </style>
 <div class="login-form-div">
-  <form class="login-form" [formGroup]="loginForm" (ngSubmit) = "onSubmit()">
+  <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="login-input-div">
       <span class="login-label"><label>
           Username:
@@ -60,13 +78,15 @@
         </label></span>
       <input type="text" formControlName="password" class="login-input-text" />
     </div>
-    <div class="login-error-message">{{errorMessage}}</div>
-     <!-- //[disabled] = "isDisabled" -->
+    <div 
+      [ngClass] = "{'login-error-message': errorMessage != ''}">{{errorMessage}}</div>
     <div class="login-button-div">
-      <button 
-        class="login-submit-button" 
-
-      >LOGIN</button>
+      <button class="login-submit-button" 
+      [ngClass]="{
+        'login-submit-button-disabled': !loginForm.valid,
+        'login-submit-button': loginForm.valid
+      }" 
+      [disabled]="!loginForm.valid">LOGIN</button>
     </div>
   </form>
 </div>

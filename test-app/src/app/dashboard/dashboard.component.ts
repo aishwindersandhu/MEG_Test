@@ -8,7 +8,7 @@ import { FormService } from '../services/form.service';
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
-  title = "Welcome to Dashboard";
+  title = "User successfully logged in";
 
   constructor(private formService: FormService) { }
   ngOnInit(): void {

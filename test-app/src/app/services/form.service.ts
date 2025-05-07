@@ -10,7 +10,7 @@ interface AuditFormResponse{
   providedIn: 'root'
 })
 export class FormService {
-   private getFormDataUrl = 'https://staging-master.azure.megsupporttools.com/api/v2/audit_form/';
+   private getFormDataUrl = 'https://staging-master.azure.megsupporttools.com/api/v2/audit_form/96/';
     constructor(private http: HttpClient) { }
     getFormData(): Observable<any> {
       const csrfToken = 'csrftoken=qqchOwPb1NVM0raKhJUzHspa3tuD1ohS'
@@ -19,7 +19,8 @@ export class FormService {
           'X-CSRFToken': csrfToken,
           'Content-Type': 'application/json',
           'Accept': 'application/json',
-          //'Authorization': `Bearer ${}`
+          //'Authorization': `Bearer ${}`: In case the application still uses JwT, 
+          //As per my understanding its session based from backend, hence using CSRF token.
         },
         withCredentials:true
         

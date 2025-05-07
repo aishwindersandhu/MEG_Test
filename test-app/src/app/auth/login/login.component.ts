@@ -18,7 +18,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   title = 'login page';
   errorMessage = '';
-  // isDisabled = true;
+  isDisabled = true;
   loginForm: FormGroup;
   constructor(private fb: FormBuilder,
     private http: HttpClient,
@@ -33,8 +33,12 @@ export class LoginComponent {
   }
   onSubmit() {
     //make valid login api call to login the user
-    if (this.loginForm.invalid) return; // incase the form is empty or invalid
-    this.authService.login(this.loginForm.value)
+    if (this.loginForm.invalid) {
+      this.isDisabled = true;
+      return;
+    } // incase the form is empty or invalid
+    else{
+      this.authService.login(this.loginForm.value)
       .subscribe({
         next: (res) => {
           //Redirect to dashboard only if valid token
@@ -43,9 +47,11 @@ export class LoginComponent {
           }
         },
         error: (err) => {
-          this.errorMessage = "Invalid Credentials"
-          console.log(err, "Error from API");
+          this.errorMessage = "Invalid Credentials";
+          this.isDisabled = true;
+          console.log(err, "Error from Login API");
         }
       });
+    }
   }
 }
