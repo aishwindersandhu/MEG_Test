@@ -9,7 +9,6 @@ import { FormService } from '../services/form.service';
 })
 export class DashboardComponent {
   title = "User successfully logged in";
-
   constructor(private formService: FormService) { }
   ngOnInit(): void {
     this.formService.getFormData()
@@ -21,7 +20,12 @@ export class DashboardComponent {
           console.log(err, "err in getForms");
         }
       });
-      this.formService.submitFormData()
+     
+      
+  }
+  submitForm(){
+    
+    this.formService.submitFormData()
       .subscribe({
         next:(data)=>{
           console.log("submitted successfully", data);

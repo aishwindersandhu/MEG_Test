@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
@@ -11,23 +11,43 @@ interface AuditFormResponse {
 })
 export class FormService {
   id = 96;//Ideally need to pass the id acquired from user profile from logging-in
-  private getFormDataUrl = `/api/v2/audit_form/${this.id}/`;
+  // private getFormDataUrl = `/api/v2/audit_form/${this.id}/`;
+  private getFormDataUrl = `/api/v2/audit_form/`;
   private postFormDataUrl = `/api/v2/audit_form/${this.id}/submit/`;
   //getting authenticated token from localstorage, this can be done via session as well. 
   token = localStorage.getItem('token');
-  postObj = {
+  getObj = {
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
       'Authorization': `Token ${this.token}`, //sending the obtained token for further api calls.
-
-    },
-    body: { "send_email": true, "observations": [{ "ward": 1, "date": "2023-03-01", "custom_str_fi eld": "fi eld value", "custom_bool_fi eld": true, "custom_int_fi eld": 100, "custom_fl oat_fi eld": 99.99, }], "start_time": "2023-03-01T09:20:51.510Z", "end_time": "2023-03-01T09:20:51.510Z", "comment": "this is a comment explaining this observation", },
-    withCredentials: true
+    }
   }
+  postObj = {
+      "start_time": "2025-05-07T17:49:00.000Z",
+      "end_time": "2025-05-07T17:49:00.000Z",
+      "comment": null,
+      "send_email": false,
+      "observations": [
+        {
+          "ward": 32,
+          "date": "2025-05-07T17:49:40.262Z",
+          "issues": [],
+          "answer_comments": [],
+          "valid": true,
+          "text_input": "abcd",
+          "choice_field": "N/A"
+        }
+      ],
+      "signatures": [],
+      "report_auditors": [],
+      "submitting_anonymously": false
+  }
+
   constructor(private http: HttpClient) { }
+
   getFormData(): Observable<any> {
-    return this.http.get<any>(this.getFormDataUrl, this.postObj).pipe((
+    return this.http.get<any>(this.getFormDataUrl, this.getObj).pipe((
       tap((res) => {
         console.log(res, "response from get form data");
       }
@@ -36,17 +56,21 @@ export class FormService {
         return throwError(() => err);
       })
     );
+  }
+  post_headers = {
+    headers: new HttpHeaders().set('Authorization',`Token ${this.token}`)
+  }
+  submitFormData():Observable<any>{
+    return this.http.post<any>(this.postFormDataUrl,this.postObj,this.post_headers).pipe(
+      tap((res)=>{
+        console.log("res",res);
+      }),
+      catchError((err)=>{
+        console.log("res",err);
+        return throwError(() => err);
+      })
+    )
   }
 
-  submitFormData(): Observable<any> {
-    return this.http.post<any>(this.postFormDataUrl, this.postObj).pipe((
-      tap((res) => {
-        console.log(res, "response from get form data");
-      }
-      )),
-      catchError((err) => {
-        return throwError(() => err);
-      })
-    );
-  }
+
 }

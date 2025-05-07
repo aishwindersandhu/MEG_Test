@@ -1,0 +1,9 @@
+{
+  "/api": {
+    "target": "https://staging-master.azure.megsupporttools.com",
+    "secure": false,
+    "changeOrigin": true,
+    "withCredentials": true,
+    "logLevel": "debug"
+  }
+}
