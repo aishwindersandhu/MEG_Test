@@ -3,12 +3,21 @@
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.10.
 
 ## Development server
-
-To start a local development server, run:
+To start a local development server without , run:
 
 ```bash
-ng serve
+ng serve 
 ```
+To run this locally with proper API responses and flow, run with proxy.
+To start a local development server with proxy to bypass cors issue and not be blocked, run:
+
+```bash
+ng serve --proxy-config proxy.conf.json
+```
+successfull login:
+username: test-user
+password:@x5Fn7yM$SdLxjor
+
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
