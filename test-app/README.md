@@ -15,13 +15,12 @@ ng serve
 ```
 To run this locally with proper API responses and flow, run with proxy.
 To start a local development server with proxy to bypass cors issue and not be blocked, run:
+This is only for development, for deployment the flow would be entirely supported by backend authentication.
 
 ```bash
 ng serve --proxy-config proxy.conf.json
 ```
-successfull login:
-username: test-user
-password:@x5Fn7yM$SdLxjor
+
 
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
