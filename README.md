@@ -3,7 +3,7 @@
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.10.
 - This project demonstrates a simple login form in Angular using reactive forms. It includes form validation, API call simulation, error handling, and unit tests for the login component using Angular's standalone APIs.
 - It also demonstrates routing using Routers in Angular on successful login.
-- I have taken the liberity to demonstrate setting up proxy, when challenged on security roadblocks from Backend in development.
+- To handle CORS-related issues during development, I’ve configured a development proxy setup. This is strictly for local use.
 - Test cases for Login Component have been implemented and an attached screenshot of executed tests are included. 
 # Clone Repo
 In case of cloning this for running locally the URL is : https://github.com/aishwindersandhu/MEG_Test.git
@@ -14,7 +14,9 @@ To start a local development server without , run:
 ng serve 
 ```
 To run this locally with proper API responses and flow, run with proxy.
-To start a local development server with proxy to bypass cors issue and not be blocked, run:
+To start a local development server with proxy to bypass cors issue and not be blocked.
+This is only for development, for deployment the flow would be entirely supported by backend authentication.
+run:
 
 ```bash
 ng serve --proxy-config proxy.conf.json
