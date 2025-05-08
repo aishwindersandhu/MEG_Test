@@ -41,7 +41,7 @@ export class FormService {
   post_headers = {
     headers: new HttpHeaders().set('Authorization',`Token ${this.token}`)
   }
-  submitFormData(auditForm:{ward: string,text_input: string }):Observable<any>{
+  submitFormData(auditForm:{ward: string,text_input: string, valid: boolean }):Observable<any>{
     var postObj = {
       "start_time": "2025-05-07T17:49:00.000Z",
       "end_time": "2025-05-07T17:49:00.000Z",
@@ -53,7 +53,7 @@ export class FormService {
           "date": "2025-05-07T17:49:40.262Z",
           "issues": [],
           "answer_comments": [],
-          "valid": true,
+          "valid": auditForm.valid,
           "text_input": auditForm.text_input,
           "choice_field": "N/A"
         }

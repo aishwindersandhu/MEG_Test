@@ -13,11 +13,14 @@
     background-color: #d4edda;
 
   }
+
   .dashboard-success-message-div {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 25px;
   }
+
   .dashboard-submit-button {
     background-color: #3B82F6;
     height: 50px;
@@ -27,13 +30,75 @@
     border: none;
     cursor: pointer;
   }
-  .dashboard-form-div{
-    
+
+  .dashboard-submit-button-disabled {
+    background-color: #3B82F6;
+    opacity: 60%;
+    height: 50px;
+    width: 150px;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    cursor: not-allowed;
   }
-  .dashboard-form{
+
+  .dashboard-form {
+    /* display: flex
+; */
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    width: 400px;
+    left: 38%;
+    height: 400px;
+  }
+
+  .dashboard-form-input {
+    height: 40px;
+    width: 200px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+  }
+
+  .dashboard-form-label-div {
+    margin: 25px;
+  }
+
+  .dashboard-form-label {
+    padding: 10px;
+    width: 60px;
+    display: inline-block;
+  }
+
+  .dashboard-submit-button-div {
     display: flex;
     justify-content: center;
-    align-items: center ;
+    align-items: center;
+    margin-left: 25px;
+  }
+
+  .dashboard-form-checkbox {
+    height: 25px;
+    width: 25px;
+  }
+
+  .required-field {
+    color: red;
+  }
+
+  .error-message {
+    color: #b00020;
+    background-color: #fdecea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    height: 50px;
+    text-align: center;
+    margin: 10px;
   }
 </style>
 <div class="dashboard-main-div">
@@ -42,16 +107,29 @@
   </div>
   <form [formGroup]="auditForm" (ngSubmit)="submitForm()" class="dashboard-form">
     <div class="dashboard-form-div">
-      <span class="login-label"><label>
-          Ward:
-        </label></span>
-      <input type="text" formControlName="ward" class="login-input-text" />
-      <span class="login-label"><label>
-        Text:
-      </label></span>
-    <input type="text" formControlName="text_input" class="login-input-text" />
-    <div><button class="dashboard-submit-button"> Submit Form</button></div>
+      <div class="dashboard-form-label-div">
+        <label class="dashboard-form-label">
+          Ward <span class="required-field">*</span>:
+        </label>
+        <input type="text" formControlName="ward" class="dashboard-form-input" />
+      </div>
+      <div class="dashboard-form-label-div"><label class="dashboard-form-label">
+          Text <span class="required-field">*</span>:
+        </label><input type="text" formControlName="text_input" class="dashboard-form-input" />
+      </div>
+      <div class="dashboard-form-label-div"><label class="dashboard-form-label">
+          Valid:
+        </label><input type="checkbox" formControlName="valid" class="dashboard-form-checkbox" />
+      </div>
+      <div [ngClass]="{'error-message': errorMessage !== ''}">{{errorMessage}}</div>
+      <div class="dashboard-submit-button-div">
+        <button  [ngClass]="{
+          'dashboard-submit-button-disabled': !auditForm.valid,
+          'dashboard-submit-button': auditForm.valid
+        }" 
+        [disabled]="!auditForm.valid"> Submit Form</button>
+      </div>
     </div>
-    
+
   </form>
 </div>
