@@ -19,10 +19,11 @@ export class AuthService {
       this.loginUrl
       , credentials).pipe((
         tap((res) => {
-          console.log(res, "response from login");
+         
           if (res.token) {
+            console.log("Login Successful");
             //setting the token in local storage for any further api calls
-            //This can also be done using session storage if that's required
+            //This can also be done using session storage
             localStorage.setItem('token', res.token);
           }
           //need to add else for test case

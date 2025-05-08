@@ -28,8 +28,8 @@ export class DashboardComponent {
   ngOnInit(): void {
     this.formService.getFormData()
       .subscribe({
-        next: (data) => {
-          console.log(data, "data");
+        next: () => {
+          console.log("Data fetched successfully");
         },
         error: (err) => {
           console.log(err, "err in GET AUDIT FORMS");
@@ -46,9 +46,10 @@ export class DashboardComponent {
       this.errorMessage = "";
       this.formService.submitFormData(this.auditForm.value)
         .subscribe({
-          next: (data) => {
-            console.log("submitted successfully", data);
-            alert("Submitted");
+          next: () => {
+            alert("Submitted!");
+            //clear form after submission 
+            this.auditForm.reset();
           },
           error: (err) => {
             this.isDisabled = true;

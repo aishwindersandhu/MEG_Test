@@ -11,6 +11,7 @@ interface AuditFormResponse {
 })
 export class FormService {
   id = 96;//Ideally need to pass the id acquired from user profile from logging-in
+  //Considering test-user id
   private getFormDataUrl = `/api/v2/audit_form/${this.id}/`;
   // private getFormDataUrl = `/api/v2/audit_form/`;
   private postFormDataUrl = `/api/v2/audit_form/${this.id}/submit/`;
@@ -26,7 +27,6 @@ export class FormService {
  
 
   constructor(private http: HttpClient) { }
-
   getFormData(): Observable<any> {
     return this.http.get<any>(this.getFormDataUrl, this.getObj).pipe((
       tap((res) => {
@@ -63,11 +63,11 @@ export class FormService {
       "submitting_anonymously": false
   }
     return this.http.post<any>(this.postFormDataUrl,postObj,this.post_headers).pipe(
-      tap((res)=>{
-        console.log("res",res);
+      tap(()=>{
+        console.log("Submission Successful");
       }),
       catchError((err)=>{
-        console.log("res",err);
+        console.log("Error in Submission:",err);
         return throwError(() => err);
       })
     )
