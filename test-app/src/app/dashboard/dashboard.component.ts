@@ -48,6 +48,7 @@ export class DashboardComponent {
         .subscribe({
           next: (data) => {
             console.log("submitted successfully", data);
+            alert("Submitted");
           },
           error: (err) => {
             this.isDisabled = true;
