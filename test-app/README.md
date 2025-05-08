@@ -14,8 +14,9 @@ To start a local development server without , run:
 ng serve 
 ```
 To run this locally with proper API responses and flow, run with proxy.
-To start a local development server with proxy to bypass cors issue and not be blocked, run:
+To start a local development server with proxy to bypass cors issue and not be blocked.
 This is only for development, for deployment the flow would be entirely supported by backend authentication.
+run:
 
 ```bash
 ng serve --proxy-config proxy.conf.json
