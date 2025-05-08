@@ -13,8 +13,8 @@ fdescribe('LoginComponent', () => {
   let routerSpy: jasmine.SpyObj<Router>;
 
   beforeEach(async () => {
-    authServiceSpy = jasmine.createSpyObj('AuthService', ['login']);
-    routerSpy = jasmine.createSpyObj('Router',['navigate']);
+    authServiceSpy = jasmine.createSpyObj('AuthService', ['login']);//creating a mock service object
+    routerSpy = jasmine.createSpyObj('Router',['navigate']);//creating a mock router object
     await TestBed.configureTestingModule({
       imports: [LoginComponent, ReactiveFormsModule],
       providers: [provideHttpClient(),
@@ -44,6 +44,7 @@ fdescribe('LoginComponent', () => {
     expect(authServiceSpy.login).not.toHaveBeenCalled();
   })
   fit('should login and navigate to dashboard if token is present', () => {
+    //mock token for authenticating navigating only if user is authenticated
     const mockResponse = { token: 'Token abc123' };
     authServiceSpy.login.and.returnValue(of(mockResponse));
     component.loginForm.setValue({ username: 'user', password: 'pass' });

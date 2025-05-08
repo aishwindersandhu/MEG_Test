@@ -1,7 +1,12 @@
 # TestApp
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.10.
-
+-This project demonstrates a simple login form in Angular using reactive forms. It includes form validation, API call simulation, error handling, and unit tests for the login component using Angular's standalone APIs.
+-It also demonstrates routing using Routers in Angular on successful login.
+-I have taken the liberity to demonstrate setting up proxy, when challenged on security roadblocks from Backend in development.
+- Test cases for Login Component have been implemented and an attached screenshot of executed tests are included. 
+# Clone Repo
+In case of cloning this for running locally the URL is : https://github.com/aishwindersandhu/MEG_Test.git
 ## Development server
 To start a local development server without , run:
 
@@ -46,9 +51,15 @@ ng build
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
 ## Running unit tests
-
+1.For this test, I have implemented unit tests for Login Component as demonstration of how I approach maintainability and validation of code implemented.
+2. The command will run tests only for Login Component at the moment.
+3. The features tested:
+- Validates Form Behaviour
+- Mocks AuthService and Router
+- Asserts success and failure flows.
+- Handles API error.
 To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
+![alt text](image.png)
 ```bash
 ng test
 ```
@@ -62,6 +73,12 @@ ng e2e
 ```
 
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+# Author
+Aishwinder Sandhu
+[LinkedIn](https://www.linkedin.com/in/aishwinder-sandhu-3b5002102/)
+[Github](https://github.com/aishwindersandhu)
+Email: aishwinder.sandhu@gmail.com
 
 ## Additional Resources
 
