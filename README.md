@@ -19,9 +19,6 @@ To start a local development server with proxy to bypass cors issue and not be b
 ```bash
 ng serve --proxy-config proxy.conf.json
 ```
-successfull login:
-username: test-user
-password:@x5Fn7yM$SdLxjor
 
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
