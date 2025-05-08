@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  title = 'login page';
+  title = 'Login to your account';
   errorMessage = '';
   isDisabled = true;
   loginForm: FormGroup;
